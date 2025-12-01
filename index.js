@@ -60,6 +60,17 @@ app.post("/api/services", async (req, res) => {
 });
 
 
+// Update service
+app.put("/api/services/:id", async (req, res) => {
+  const result = await Services.updateOne(
+    { _id: new ObjectId(req.params.id) },
+    { $set: req.body }
+  );
+  res.send(result);
+});
+
+
+
 // start server from here
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
