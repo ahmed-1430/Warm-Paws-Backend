@@ -87,6 +87,22 @@ app.post("/api/bookings", async (req, res) => {
 })
 
 
+// Get bookings by user
+app.get("/api/bookings/:userId", async (req, res) => {
+  const result = await Bookings.find({ userId: req.params.userId }).toArray();
+  res.send(result);
+});
+
+// Update booking status
+app.put("/api/bookings/:id", async (req, res) => {
+  const result = await Bookings.updateOne(
+    { _id: new ObjectId(req.params.id) },
+    { $set: req.body }
+  );
+  res.send(result);
+});
+
+
 
 
 // start server from here
