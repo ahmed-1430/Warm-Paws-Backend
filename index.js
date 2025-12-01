@@ -103,6 +103,12 @@ app.put("/api/bookings/:id", async (req, res) => {
 });
 
 
+// Delete booking
+app.delete("/api/bookings/:id", async (req, res) => {
+  const result = await Bookings.deleteOne({ _id: new ObjectId(req.params.id) });
+  res.send(result);
+});
+
 
 
 // start server from here
