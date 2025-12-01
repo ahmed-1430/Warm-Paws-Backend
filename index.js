@@ -69,6 +69,13 @@ app.put("/api/services/:id", async (req, res) => {
   res.send(result);
 });
 
+// Delete service
+app.delete("/api/services/:id", async (req, res) => {
+  const result = await Services.deleteOne({ _id: new ObjectId(req.params.id) });
+  res.send(result);
+});
+
+
 
 
 // start server from here
