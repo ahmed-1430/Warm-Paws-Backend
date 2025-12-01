@@ -77,6 +77,17 @@ app.delete("/api/services/:id", async (req, res) => {
 
 
 
+// BOOKINGS API STARTED
+
+
+// Create booking
+app.post("/api/bookings", async (req, res) => {
+  const result = await Bookings.insertOne(req.body);
+  res.send(result);
+})
+
+
+
 
 // start server from here
 const PORT = process.env.PORT || 3000;
