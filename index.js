@@ -29,10 +29,27 @@ connectDB();
 
 
 
-app.get('/', (req, res) => {
-  res.send('Server is Running.....')
-})
+//  ALL ROUTES
 
+
+// ROOT
+app.get("/", (req, res) => {
+  res.send("WarmPaws Server is Running...");
+});
+
+
+// SERVICES API STARTED
+
+
+// Get all services Api
+app.get("/api/services", async (req, res) => {
+  const result = await Services.find().toArray();
+  res.send(result);
+});
+
+
+
+// start server from here
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
