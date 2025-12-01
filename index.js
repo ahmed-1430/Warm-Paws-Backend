@@ -53,6 +53,11 @@ app.get("/api/services/:id", async (req, res) => {
   res.send(result);
 });
 
+// Add service
+app.post("/api/services", async (req, res) => {
+  const result = await Services.insertOne(req.body);
+  res.send(result);
+});
 
 
 // start server from here
