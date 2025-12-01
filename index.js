@@ -111,6 +111,33 @@ app.delete("/api/bookings/:id", async (req, res) => {
 
 
 
+// REVIEWS API STARTED
+
+
+// Add review
+app.post("/api/reviews", async (req, res) => {
+  const result = await Reviews.insertOne(req.body);
+  res.send(result);
+});
+
+// Get all reviews for a service
+app.get("/api/reviews/service/:serviceId", async (req, res) => {
+  const result = await Reviews.find({
+    serviceId: req.params.serviceId,
+  }).toArray();
+  res.send(result);
+});
+
+// Get all reviews by a user
+app.get("/api/reviews/user/:userId", async (req, res) => {
+  const result = await Reviews.find({
+    userId: req.params.userId,
+  }).toArray();
+  res.send(result);
+});
+
+
+
 // start server from here
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
