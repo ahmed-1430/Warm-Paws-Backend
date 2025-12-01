@@ -47,6 +47,12 @@ app.get("/api/services", async (req, res) => {
   res.send(result);
 });
 
+// Get single service Api
+app.get("/api/services/:id", async (req, res) => {
+  const result = await Services.findOne({ _id: new ObjectId(req.params.id) });
+  res.send(result);
+});
+
 
 
 // start server from here
